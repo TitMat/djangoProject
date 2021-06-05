@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'drones/style.css' %}">
+
+<h1>PARAMETRAGE DE LA SIMULATION</h1>
+<h2>{{ simulation.Drone.name }}</h2>
+<b>SUR</b>
+<h2>{{ simulation.Zone.name }}</h2>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'drones:simulate' simulation.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+    <table>
+        <tbody>
+            <tr>
+                <th><label>Hauteur de vol (en mètres) : </label><input id="your_name" type="text" name="your_name" value="10"></th>
+            </tr>
+            <tr>
+                <th><label>Le feu doit être détecté en moins de (en minutes) : </label><input id="your_name" type="text" name="your_name" value="10"></th>
+            </tr>
+        </tbody>
+    </table>
+<input type="submit" value="Lancer la simulation">
+</form>

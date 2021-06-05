@@ -1,0 +1,76 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'drones/style.css' %}">
+
+<h1>Préparation de la simulation</h1>
+<h2>Drones disponibles</h2>
+{% if all_drones_list %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Poids</th>
+                <th>Autonomie</th>
+                <th>Vitesse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+    {% for drone in all_drones_list %}
+                <td>{{ drone.name}}</td>
+                <td>{{ drone.marque}}</td>
+                <td>{{ drone.modele}}</td>
+                <td>{{ drone.poids}}</td>
+                <td>{{ drone.autonomie}}</td>
+                <td>{{ drone.vitesse}}</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No drones are available.</p>
+{% endif %}
+
+<h2>Zones disponibles</h2>
+
+{% if all_zones_list %}
+<table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Lat inf. bas</th>
+                <th>Long inf. bas</th>
+                <th>Lat sup. haut</th>
+                <th>Long sup. haut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+    {% for zone in all_zones_list %}
+                <td>{{ zone.name}}</td>
+                <td>{{ zone.lat}}</td>
+                <td>{{ zone.long}}</td>
+                <td>{{ zone.lat2}}</td>
+                <td>{{ zone.long2}}</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No zones are available.</p>
+{% endif %}
+
+<h2>Choix d'une simulation</h2>
+
+{% if all_simulations_list %}
+    <ul>
+    {% for simulation in all_simulations_list %}
+        <li><a href="{% url 'drones:preparesimu' simulation.id %}">{{ simulation.name }}</a>
+            <b>Drone utilisé :</b> {{ simulation.Drone.name }}
+            <b>Zone ciblée : </b> {{ simulation.Zone.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No simulations are available.</p>
+{% endif %}

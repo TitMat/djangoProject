@@ -1,0 +1,15 @@
+li a {
+    color: blue;
+}
+
+body {
+    background-image: url("images/backdrones.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+  max-width: 100%;
+  height: auto;
+}

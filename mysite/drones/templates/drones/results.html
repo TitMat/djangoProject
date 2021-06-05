@@ -1,0 +1,52 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'drones/style.css' %}">
+
+<h1>RESULTAT DE LA SIMULATION</h1>
+<h1>{{ simulation.name }}</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre de simulations</th>
+            <th>Nombre de drones</th>
+            <th>Temps moyen de détection du feu</th>
+            <th>% tentatives < 10 minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr bgcolor="#F2EDEC ">
+            <th>50</th>
+            <th>1</th>
+            <th>15</th>
+            <th>12</th>
+        </tr>
+            <tr  bgcolor="#F2EDEC ">
+            <th>50</th>
+            <th>2</th>
+            <th>12</th>
+            <th>42</th>
+        </tr>
+            <tr  bgcolor="#F2EDEC ">
+            <th>50</th>
+            <th>3</th>
+            <th>9</th>
+            <th>88</th>
+        </tr>
+            <tr bgcolor="#24F90D ">
+                    <th>50</th>
+                    <th>4</th>
+                    <th>6</th>
+                    <th>99</th>
+        </tr>
+    </tbody>
+</table>
+
+<H1>Il faut 4 drone de type PARROT ANFI PRO</H1>
+<H1>pour détecter un incendie en moins de 10mn sur la zone THOLONET </H1>
+
+<a href="{% url 'drones:index' %}">Faire une autre simulation</a>
+
+
+<H1>Developpement en cours</H1>
+<h1>{{ simulation.bilan }}</h1>
+<H1>/Developpement en cours</H1>
